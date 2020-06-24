@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Node {
+public class Node{
     private String label;
     private int key; //distance
     private Node parent;
@@ -60,4 +60,6 @@ public class Node {
     public void setParent(Node parent) {
         this.parent = parent;
     }
+
+
 }
