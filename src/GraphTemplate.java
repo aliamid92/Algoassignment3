@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class GraphTemplate {
@@ -37,11 +36,13 @@ public class GraphTemplate {
     }
 
     public void print() {
+        System.out.println("Bellow please find your Graph: ");
         for (int i = 0; i < nodes.size(); i++) {
             for (Node node : nodes.get(i).addConnection().keySet()) {
                 System.out.println(nodes.get(i).getLabel() + " ------> " + node.getLabel());
             }
         }
+        System.out.println("===========================================");
     }
 
     public void Prim() {
@@ -54,10 +55,10 @@ public class GraphTemplate {
         for (int i = 0; i < this.nodes.size(); i++) {
             if (!nodes.get(i).Permanent) {
                 nodes.get(i).Permanent = true;
-                for (Node node : nodes.get(i).getGetaadjacentNodes().keySet()) {
-                    if (nodes.get(i).getGetaadjacentNodes().get(node) < node.getKey()) {
+                for (Node node : nodes.get(i).getAdjacentNodes().keySet()) {
+                    if (nodes.get(i).getAdjacentNodes().get(node) < node.getKey()) {
                         if (!node.Permanent) {
-                            node.setKey(nodes.get(i).getGetaadjacentNodes().get(node));
+                            node.setKey(nodes.get(i).getAdjacentNodes().get(node));
                             node.setParent((nodes.get(i)));
                         }
                     } else {
@@ -66,6 +67,7 @@ public class GraphTemplate {
                 }
             }
         }
+        System.out.println("Below please find the result after implementing the Prim Algorithm on your non-directional Graph:");
         int cost = 0;
         for (int i = 0; i < nodes.size(); i++) {
             cost = cost + nodes.get(i).getKey();
@@ -81,6 +83,7 @@ public class GraphTemplate {
         for (int i = 0; i < nodes.size(); i++) {
             System.out.println("Key of " +nodes.get(i).getLabel() + " : " + nodes.get(i).getKey());
         }
+        System.out.println("===================================================");
 
 
     }
@@ -88,16 +91,20 @@ public class GraphTemplate {
     public void BellmanFord(){
         // key in this code is distance
         nodes.get(0).setKey(0);
+        nodes.get(0).setParent(null);
         for (int i = 1; i < this.nodes.size(); i++) {
             nodes.get(i).setKey(Integer.MAX_VALUE);
+            nodes.get(i).setParent(null);
         }
         int count = 1;
+        System.out.println("Bellow please find your Graph after implementing the BellmanFord Algorithm: ");
         while (count<=nodes.size()-1){
             //begin relaxation
             for (int i = 0; i < this.nodes.size(); i++) {
-                for (Node node : nodes.get(i).getGetaadjacentNodes().keySet()) {
-                    if(nodes.get(i).getKey()+nodes.get(i).getGetaadjacentNodes().get(node)<node.getKey()){
-                        node.setKey(nodes.get(i).getKey()+nodes.get(i).getGetaadjacentNodes().get(node));
+                for (Node node : nodes.get(i).getAdjacentNodes().keySet()) {
+                    if(nodes.get(i).getKey()+nodes.get(i).getAdjacentNodes().get(node)<node.getKey()){
+                        node.setKey(nodes.get(i).getKey()+nodes.get(i).getAdjacentNodes().get(node));
+                        node.setParent((nodes.get(i)));
                     }else{
                         //do nothing
                     }
@@ -105,11 +112,19 @@ public class GraphTemplate {
 
             }
 
+
             count++;
         }
         for (int i = 0; i < nodes.size(); i++) {
-            System.out.println("Key of " +nodes.get(i).getLabel() + " : " + nodes.get(i).getKey());
+            System.out.println("Distance of " +nodes.get(i).getLabel() + " : " + nodes.get(i).getKey());
         }
+
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes.get(i).getParent() != null) {
+                System.out.println("The Parent of " + nodes.get(i).getLabel() + " is " + nodes.get(i).getParent().getLabel());
+            }
+        }
+        System.out.println("==================================================");
 
 
 

@@ -6,7 +6,7 @@ public class Node{
     private int key; // in Bellman-Ford we know this parameter as distance
     private Node parent;
     boolean Permanent = false;
-    private Map<Node,Integer> getaadjacentNodes = new HashMap<>();
+    private Map<Node,Integer> adjacentNodes = new HashMap<>();
 
 
     public Node(String label) {
@@ -14,18 +14,18 @@ public class Node{
     }
 
     public boolean addConnection(Node node, int weight){
-        if (getaadjacentNodes.containsKey(node)){
+        if (adjacentNodes.containsKey(node)){
             return false;
         }else{
-            getaadjacentNodes.put(node,weight);
+            adjacentNodes.put(node,weight);
             return true;
         }
 
     }
 
     public boolean removeConnection(Node node){
-        if (getaadjacentNodes.containsKey(node)){
-            getaadjacentNodes.remove(node);
+        if (adjacentNodes.containsKey(node)){
+            adjacentNodes.remove(node);
             return true;
 
         }else{
@@ -45,12 +45,12 @@ public class Node{
         return parent;
     }
 
-    public Map<Node, Integer> getGetaadjacentNodes() {
-        return getaadjacentNodes;
+    public Map<Node, Integer> getAdjacentNodes() {
+        return adjacentNodes;
     }
 
     public Map<Node, Integer> addConnection() {
-        return getaadjacentNodes;
+        return adjacentNodes;
     }
 
     public void setKey(int key) {

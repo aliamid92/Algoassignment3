@@ -1,0 +1,17 @@
+digraph G {
+graph [ dpi = 200 ]
+node [fontname=Arial ];
+node [shape=circle];
+edge [arrowsize=1];
+nodee [label="e"];
+nodea -> nodee;
+nodeb [label="b"];
+nodee -> nodeb;
+nodef [label="f"];
+nodea -> nodef;
+nodec [label="c"];
+nodee -> nodec;
+noded [label="d"];
+nodec -> noded;
+nodea [label="a"];
+}
