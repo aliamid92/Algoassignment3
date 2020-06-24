@@ -1,52 +1,83 @@
 public class Main {
 
     public static void main(String[] args) {
+//        Node nodea = new Node("a");
+//        Node nodeb = new Node("b");
+//        Node nodec = new Node("c");
+//        Node noded = new Node("d");
+//        Node nodee = new Node("e");
+//        Node nodef = new Node("f");
+//
+//        nodea.addConnection(nodeb,1);
+//        nodea.addConnection(nodef,3);
+//
+//        nodeb.addConnection(nodea,1);
+//        nodeb.addConnection(nodee,2);
+//        nodeb.addConnection(noded,6);
+//        nodeb.addConnection(nodec,4);
+//
+//        nodec.addConnection(nodeb,4);
+//        nodec.addConnection(noded,1);
+//
+//        noded.addConnection(nodec,1);
+//        noded.addConnection(nodeb,6);
+//        noded.addConnection(nodee,5);
+//        noded.addConnection(nodef,8);
+//
+//        nodee.addConnection(nodeb,2);
+//        nodee.addConnection(noded,5);
+//        nodee.addConnection(nodef,6);
+//
+//        nodef.addConnection(nodea,3);
+//        nodef.addConnection(nodee,6);
+//        nodef.addConnection(noded,8);
+//
+//        GraphTemplate graphTemplate = new GraphTemplate("GraphTemplate",false);
+//        graphTemplate.addNode(nodef);
+//        graphTemplate.addNode(nodea);
+//        graphTemplate.addNode(nodeb);
+//        graphTemplate.addNode(nodec);
+//        graphTemplate.addNode(noded);
+//        graphTemplate.addNode(nodee);
+//        graphTemplate.print();
+//        System.out.println("=====================");
+//        graphTemplate.Prim();
+
+
+
         Node nodea = new Node("a");
         Node nodeb = new Node("b");
         Node nodec = new Node("c");
         Node noded = new Node("d");
         Node nodee = new Node("e");
         Node nodef = new Node("f");
+        Node nodeg = new Node("g");
 
-        nodea.addConnection(nodeb,1);
-        nodea.addConnection(nodef,3);
+        nodea.addConnection(nodeb,6);
+        nodea.addConnection(nodec,5);
+        nodea.addConnection(noded,5);
 
-        nodeb.addConnection(nodea,1);
-        nodeb.addConnection(nodee,2);
-        nodeb.addConnection(noded,6);
-        nodeb.addConnection(nodec,4);
+        nodeb.addConnection(nodee,-1);
 
-        nodec.addConnection(nodeb,4);
-        nodec.addConnection(noded,1);
+        nodec.addConnection(nodeb,-2);
+        nodec.addConnection(nodee,1);
 
-        noded.addConnection(nodec,1);
-        noded.addConnection(nodeb,6);
-        noded.addConnection(nodee,5);
-        noded.addConnection(nodef,8);
+        noded.addConnection(nodec,-2);
+        noded.addConnection(nodef,-1);
 
-        nodee.addConnection(nodeb,2);
-        nodee.addConnection(noded,5);
-        nodee.addConnection(nodef,6);
+        nodee.addConnection(nodeg,3);
 
-        nodef.addConnection(nodea,3);
-        nodef.addConnection(nodee,6);
-        nodef.addConnection(noded,8);
-
-        GraphTemplate graphTemplate = new GraphTemplate("GraphTemplate");
-        graphTemplate.addNode(nodef);
+        nodef.addConnection(nodeg,3);
+        GraphTemplate graphTemplate = new GraphTemplate("GraphTemplate",true);
         graphTemplate.addNode(nodea);
         graphTemplate.addNode(nodeb);
         graphTemplate.addNode(nodec);
         graphTemplate.addNode(noded);
         graphTemplate.addNode(nodee);
+        graphTemplate.addNode(nodef);
+        graphTemplate.addNode(nodeg);
+        graphTemplate.BellmanFord();
 
-
-
-
-        graphTemplate.print();
-
-        System.out.println("=====================");
-        graphTemplate.Prim();
 
 
 

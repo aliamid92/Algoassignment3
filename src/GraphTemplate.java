@@ -8,10 +8,10 @@ public class GraphTemplate {
     MinHeapTemplate minPriorityQueue;
     boolean isDirected;
 
-    public GraphTemplate(String name) {
+    public GraphTemplate(String name, Boolean isDirected) {
         this.name = name;
         // By default it will be non-directional
-        this.isDirected = false;
+        this.isDirected = isDirected;
     }
 
     public List<Node> getAListOfNodes() {
@@ -81,6 +81,37 @@ public class GraphTemplate {
         for (int i = 0; i < nodes.size(); i++) {
             System.out.println("Key of " +nodes.get(i).getLabel() + " : " + nodes.get(i).getKey());
         }
+
+
+    }
+
+    public void BellmanFord(){
+        // key in this code is distance
+        nodes.get(0).setKey(0);
+        for (int i = 1; i < this.nodes.size(); i++) {
+            nodes.get(i).setKey(Integer.MAX_VALUE);
+        }
+        int count = 1;
+        while (count<=nodes.size()-1){
+            //begin relaxation
+            for (int i = 0; i < this.nodes.size(); i++) {
+                for (Node node : nodes.get(i).getGetaadjacentNodes().keySet()) {
+                    if(nodes.get(i).getKey()+nodes.get(i).getGetaadjacentNodes().get(node)<node.getKey()){
+                        node.setKey(nodes.get(i).getKey()+nodes.get(i).getGetaadjacentNodes().get(node));
+                    }else{
+                        //do nothing
+                    }
+                }
+
+            }
+
+            count++;
+        }
+        for (int i = 0; i < nodes.size(); i++) {
+            System.out.println("Key of " +nodes.get(i).getLabel() + " : " + nodes.get(i).getKey());
+        }
+
+
 
 
     }

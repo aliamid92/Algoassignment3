@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class Node{
     private String label;
-    private int key; //distance
+    private int key; // in Bellman-Ford we know this parameter as distance
     private Node parent;
     boolean Permanent = false;
     private Map<Node,Integer> getaadjacentNodes = new HashMap<>();
