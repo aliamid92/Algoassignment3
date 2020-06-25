@@ -38,7 +38,7 @@ public class GraphTemplate {
     public void print() {
         System.out.println("Bellow please find your Graph: ");
         for (int i = 0; i < nodes.size(); i++) {
-            for (Node node : nodes.get(i).addConnection().keySet()) {
+            for (Node node : nodes.get(i).getAdjacentNodes().keySet()) {
                 System.out.println(nodes.get(i).getLabel() + " ------> " + node.getLabel());
             }
         }
